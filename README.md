@@ -1,16 +1,20 @@
 # S-PMU
 
 1. PMU_simulator_without_security.c 
+
 	This program defines all the necessary fields of IEEE C37.118.2 protocol and send it to destination device. 
 
-Commands to execute the program at terminal
+Commands to execute the program at terminal  
 Step 1: Run ifconfig at terminal to know the interface name and sender device MAC address. 
-$ ifconfig
+	$ ifconfig
+	
 Step 2: Set Destination MAC address in the program to 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF values in case of broadcasting the PMU packets in the network. 
+
 Step 3: Compilation of program
-$ gcc -o PMU_sender_without_security  PMU_sender_without_security.c 
+	$ gcc -o PMU_sender_without_security  PMU_sender_without_security.c 
+	
 Step 4: To run the code
-$./ PMU_sender_without_security
+	$./ PMU_sender_without_security
 
 2. PMU_simulator_with_security_only_mac.c 
  
@@ -18,12 +22,16 @@ $./ PMU_sender_without_security
 
 Commands to execute the program at terminal
 Step 1: Install openssl library if not installed using the following command. 
-$ sudo apt-get install libssl-dev
+	$ sudo apt-get install libssl-dev
+	
 Step 2: Run ifconfig at terminal to know the interface name and sender device MAC address. 
-$ ifconfig
+	$ ifconfig
+	
 Step 3: Set Destination MAC address in the program to 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF values in case of broadcasting the PMU packets in the network. 
+
 Step 4: Compilation of program
-$ gcc -o PMU_simulator_with_security_only_mac  PMU_simulator_with_security_only_mac.c  
+	$ gcc -o PMU_simulator_with_security_only_mac  PMU_simulator_with_security_only_mac.c -L /usr/local/lib/ -lssl -lcrypto 
+	
 Step 4: To run the code
-$./PMU_simulator_with_security_only_mac  
+	$./PMU_simulator_with_security_only_mac  
 
