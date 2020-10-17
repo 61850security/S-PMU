@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <openssl/hmac.h>
 #include <openssl/evp.h>
-
+/* keep destination MAC address to 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF in case of broadcast */  
 /* Keep your intended destination MAC here*/
 #define DEST_MAC0    0xFF
 #define DEST_MAC1    0xFF
@@ -160,8 +160,6 @@ int main(int argc, char *argv[])
     // Loop forever
     while(1) {
 
-
-
         /* Buffer of BUF_SIZ bytes we'll construct our frame in.
            First, clear it all to zero. */
         memset(sendbuf, 0, B_SIZE);
@@ -177,15 +175,14 @@ int main(int argc, char *argv[])
         sendbuf[tx_len++] = DEST_MAC4;
         sendbuf[tx_len++] = DEST_MAC5;
 
-// dc:a6:32:90:35:71
-
+        /* replace 0xXX with source node MAC address */ 
         /* Source MAC address */
-        sendbuf[tx_len++] = 0xDC;
-        sendbuf[tx_len++] = 0xA6;
-        sendbuf[tx_len++] = 0x32; 
-        sendbuf[tx_len++] = 0x90; 
-        sendbuf[tx_len++] = 0x35; 
-        sendbuf[tx_len++] = 0x71; 
+        sendbuf[tx_len++] = 0xXX;
+        sendbuf[tx_len++] = 0xXX;
+        sendbuf[tx_len++] = 0xXX; 
+        sendbuf[tx_len++] = 0xXX; 
+        sendbuf[tx_len++] = 0xXX; 
+        sendbuf[tx_len++] = 0xXX; 
 
 
         /* Ethertype field IP protocol */
@@ -200,9 +197,9 @@ int main(int argc, char *argv[])
         sendbuf[tx_len++] = totlen2;
 
         sendbuf[tx_len++] = identification1;
-		sendbuf[tx_len++] = identification2; 
+	sendbuf[tx_len++] = identification2; 
                   
-		sendbuf[tx_len++] = frag_off1;
+	sendbuf[tx_len++] = frag_off1;
         sendbuf[tx_len++] = frag_off2; 
                  
         sendbuf[tx_len++] = ttl;
@@ -225,80 +222,79 @@ int main(int argc, char *argv[])
         sendbuf[tx_len++] = srcport2;
 
         sendbuf[tx_len++] = dstport1;
-		sendbuf[tx_len++] = dstport2;
+	sendbuf[tx_len++] = dstport2;
 
-		sendbuf[tx_len++] = lengt1;
-		sendbuf[tx_len++] = lengt2;
+	sendbuf[tx_len++] = lengt1;
+	sendbuf[tx_len++] = lengt2;
 
-		sendbuf[tx_len++] = chksum1;
-		sendbuf[tx_len++] = chksum2;
+	sendbuf[tx_len++] = chksum1;
+	sendbuf[tx_len++] = chksum2;
 	
         sendbuf[tx_len++] = sync_word1;
-		sendbuf[tx_len++] = sync_word2;
+	sendbuf[tx_len++] = sync_word2;
 
         sendbuf[tx_len++] = frame_size1;
-		sendbuf[tx_len++] = frame_size2;
+	sendbuf[tx_len++] = frame_size2;
 
 	
-		sendbuf[tx_len++] = PMUID1;
-		sendbuf[tx_len++] = PMUID2;
+	sendbuf[tx_len++] = PMUID1;
+	sendbuf[tx_len++] = PMUID2;
 
-		sendbuf[tx_len++] = soc1;
-		sendbuf[tx_len++] = soc2;
-		sendbuf[tx_len++] = soc3;
-		sendbuf[tx_len++] = soc4;
+	sendbuf[tx_len++] = soc1;
+	sendbuf[tx_len++] = soc2;
+	sendbuf[tx_len++] = soc3;
+	sendbuf[tx_len++] = soc4;
 
-		sendbuf[tx_len++] = Time_quality_flag;
-		sendbuf[tx_len++] = fraction_of_seconds1;
-		sendbuf[tx_len++] = fraction_of_seconds2;
-		sendbuf[tx_len++] = fraction_of_seconds3;
+	sendbuf[tx_len++] = Time_quality_flag;
+	sendbuf[tx_len++] = fraction_of_seconds1;
+	sendbuf[tx_len++] = fraction_of_seconds2;
+	sendbuf[tx_len++] = fraction_of_seconds3;
 
-		sendbuf[tx_len++] = stat1;
-		sendbuf[tx_len++] = stat2;
+	sendbuf[tx_len++] = stat1;
+	sendbuf[tx_len++] = stat2;
 
-		sendbuf[tx_len++] = phasors1;
-		sendbuf[tx_len++] = phasors2;
-		sendbuf[tx_len++] = phasors3;
-		sendbuf[tx_len++] = phasors4;
-		sendbuf[tx_len++] = phasors5;
-		sendbuf[tx_len++] = phasors6;
-		sendbuf[tx_len++] = phasors7;
-		sendbuf[tx_len++] = phasors8;
-		sendbuf[tx_len++] = phasors9;
-		sendbuf[tx_len++] = phasors10;
-		sendbuf[tx_len++] = phasors11;
-		sendbuf[tx_len++] = phasors12;
-		sendbuf[tx_len++] = phasors13;
-		sendbuf[tx_len++] = phasors14;
-		sendbuf[tx_len++] = phasors15;
-		sendbuf[tx_len++] = phasors16;
-		sendbuf[tx_len++] = phasors17;
-		sendbuf[tx_len++] = phasors18;
-		sendbuf[tx_len++] = phasors19;
-		sendbuf[tx_len++] = phasors20;
-		sendbuf[tx_len++] = phasors21;
-		sendbuf[tx_len++] = phasors22;
-		sendbuf[tx_len++] = phasors23;
-		sendbuf[tx_len++] = phasors24;
+	sendbuf[tx_len++] = phasors1;
+	sendbuf[tx_len++] = phasors2;
+	sendbuf[tx_len++] = phasors3;
+	sendbuf[tx_len++] = phasors4;
+	sendbuf[tx_len++] = phasors5;
+	sendbuf[tx_len++] = phasors6;
+	sendbuf[tx_len++] = phasors7;
+	sendbuf[tx_len++] = phasors8;
+	sendbuf[tx_len++] = phasors9;
+	sendbuf[tx_len++] = phasors10;
+	sendbuf[tx_len++] = phasors11;
+	sendbuf[tx_len++] = phasors12;
+	sendbuf[tx_len++] = phasors13;
+	sendbuf[tx_len++] = phasors14;
+	sendbuf[tx_len++] = phasors15;
+	sendbuf[tx_len++] = phasors16;
+	sendbuf[tx_len++] = phasors17;
+	sendbuf[tx_len++] = phasors18;
+	sendbuf[tx_len++] = phasors19;
+	sendbuf[tx_len++] = phasors20;
+	sendbuf[tx_len++] = phasors21;
+	sendbuf[tx_len++] = phasors22;
+	sendbuf[tx_len++] = phasors23;
+	sendbuf[tx_len++] = phasors24;
+	sendbuf[tx_len++] = freq_deviation1;	
+	sendbuf[tx_len++] = freq_deviation2;
 
-		sendbuf[tx_len++] = freq_deviation1;	
-		sendbuf[tx_len++] = freq_deviation2;
+	sendbuf[tx_len++] = rocof1;
+	sendbuf[tx_len++] = rocof2;
+
+	sendbuf[tx_len++] = dsw1;
+	sendbuf[tx_len++] = dsw2;
+
+	sendbuf[tx_len++] = chk1;
+	sendbuf[tx_len++] = chk2;
+
 	
-		sendbuf[tx_len++] = rocof1;
-		sendbuf[tx_len++] = rocof2;
-	
-		sendbuf[tx_len++] = dsw1;
-		sendbuf[tx_len++] = dsw2;
-	
-		sendbuf[tx_len++] = chk1;
-		sendbuf[tx_len++] = chk2;
-	
-	
-		/* FCS fields*/
-		sendbuf[tx_len++] = 0x57;
-		sendbuf[tx_len++] = 0xEA;
-		sendbuf[tx_len++] = 0xF7;
-		sendbuf[tx_len++] = 0x89; 
+	/* FCS fields*/
+	sendbuf[tx_len++] = 0x57;
+	sendbuf[tx_len++] = 0xEA;
+	sendbuf[tx_len++] = 0xF7;
+	sendbuf[tx_len++] = 0x89; 
 
 	/* Index of the network device */
         socket_address.sll_ifindex = if_idx.ifr_ifindex;  /* Network Interface number */
