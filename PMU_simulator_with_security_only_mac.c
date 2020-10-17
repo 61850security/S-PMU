@@ -194,7 +194,12 @@ int main(int argc, char *argv[])
     begin = clock();
     hash = HMAC(EVP_sha256(), key, strlen((char *)key), Data, strlen((char *) Data), NULL, NULL);
     end = clock();
+
+    begin = clock();
+    hash = HMAC(EVP_sha256(), key, strlen((char *)key), Data, strlen((char *) Data), NULL, NULL);
+    end = clock();
     time_gen= (double)(end - begin) / CLOCKS_PER_SEC;
+	
     printf("\n mac generation time= %lf\n",time_gen*1000);
     
     // Loop forever
