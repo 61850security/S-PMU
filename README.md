@@ -6,6 +6,7 @@
 
 Commands to execute the program at terminal  
 Step 1: Run 'ifconfig' Linux command at terminal to know the interface name and sender device MAC address. 
+	
 	$ ifconfig
 	
 Step 2: Set Destination MAC address in the program to 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF values in case of broadcasting the PMU packets in the network. 
@@ -29,6 +30,7 @@ Step 1: Install openssl library if not installed using the following command.
 	$ sudo apt-get install libssl-dev
 	
 Step 2: Run 'ifconfig' Linux command at terminal to know the interface name and sender device MAC address. 
+
 	$ ifconfig
 	
 Step 3: Set Destination MAC address in the program to 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF values in case of broadcasting the PMU packets in the network. 
