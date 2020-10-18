@@ -59,9 +59,11 @@ Step 2: Run ifconfig at terminal to know the interface name and sender device MA
 Step 3: Set Destination MAC address in the program to 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF values in case of broadcasting the PMU packets in the network. 
 
 Step 4: Compilation of program
+
 	$ gcc -o PMU_simulator_with_security_enc_mac  PMU_simulator_with_security_enc_mac.c  
 	
 Step 4: To run the code
+
 	$./PMU_simulator_with_security_enc_mac  
 
 
