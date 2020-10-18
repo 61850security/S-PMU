@@ -41,3 +41,29 @@ Step 4: To run the code
 
 	$./PMU_simulator_with_security_only_mac  
 
+
+3. PMU_simulator_with_security_enc_mac.c 
+
+	This program encrypts the IEEE C37.118.2 payload field and generates a MAC value using AES 256 GCM and HMAC-SHA256. The encryption and MAC functions are defined in openSSL library. 
+	
+Commands to execute the program at terminal
+
+Step 1: Install openssl library if not installed using the following command. 
+
+	$ sudo apt-get install libssl-dev
+	
+Step 2: Run ifconfig at terminal to know the interface name and sender device MAC address. 
+
+	$ ifconfig
+	
+Step 3: Set Destination MAC address in the program to 0xFF 0xFF 0xFF 0xFF 0xFF 0xFF values in case of broadcasting the PMU packets in the network. 
+
+Step 4: Compilation of program
+	$ gcc -o PMU_simulator_with_security_enc_mac  PMU_simulator_with_security_enc_mac.c  
+	
+Step 4: To run the code
+	$./PMU_simulator_with_security_enc_mac  
+
+
+
+
