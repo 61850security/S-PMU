@@ -1,5 +1,13 @@
 # S-PMU
 
+# Update Status
+We are in the process of updating the current S-PMU framework with addtional security mechanisms and docuemnt the frameowrk as journal paper.
+We hope to release update S-PMU frameork sometime during 2021.
+
+
+
+
+
 1. PMU_simulator_without_security.c 
 
 	This program defines all the necessary fields of IEEE C37.118.2 protocol and send it to destination device. 
