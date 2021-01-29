@@ -1,8 +1,8 @@
 # S-PMU
 
 # Update Status
-We are in the process of updating the current S-PMU framework with addtional security mechanisms and docuemnt the frameowrk as journal paper.
-We hope to release update S-PMU frameork sometime during 2021.
+We are in the process of updating the current S-PMU framework with addtional security mechanisms and document the updated framework as journal paper.
+We hope to release updated S-PMU framework sometime during 2021.
 
 
 
